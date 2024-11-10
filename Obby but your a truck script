@@ -1,0 +1,225 @@
+-- Create ScreenGui for Loading Screen
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.ResetOnSpawn = false
+
+-- Create Frame for Loading Screen
+local frame = Instance.new("Frame")
+frame.Parent = screenGui
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.Size = UDim2.new(0, 300, 0, 200)  -- Increased size for better readability
+frame.Position = UDim2.new(0.5, -150, 0.5, -100)
+frame.BorderSizePixel = 2
+frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+
+-- Create "Loading" Text
+local loadingLabel = Instance.new("TextLabel")
+loadingLabel.Parent = frame
+loadingLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+loadingLabel.Size = UDim2.new(0, 200, 0, 30)
+loadingLabel.Position = UDim2.new(0.5, -100, 0, 20)  -- Positioned at the top of the progress bar
+loadingLabel.Text = "Loading"
+loadingLabel.TextScaled = true
+loadingLabel.TextColor3 = Color3.fromRGB(255, 165, 0)
+loadingLabel.TextXAlignment = Enum.TextXAlignment.Center
+loadingLabel.TextYAlignment = Enum.TextYAlignment.Center
+loadingLabel.BackgroundTransparency = 1  -- Make the background transparent
+
+-- Create Label for Message
+local messageLabel = Instance.new("TextLabel")
+messageLabel.Parent = frame
+messageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+messageLabel.Size = UDim2.new(0, 160, 0, 30)
+messageLabel.Position = UDim2.new(0.5, -80, 0.8, 0)
+messageLabel.Text = "Made with effort By Ramen Sukuna 🍜"
+messageLabel.TextScaled = true
+messageLabel.TextColor3 = Color3.fromRGB(255, 165, 0)  -- Orange text color
+messageLabel.TextXAlignment = Enum.TextXAlignment.Center
+messageLabel.TextYAlignment = Enum.TextYAlignment.Center
+messageLabel.BackgroundTransparency = 1  -- Make the background transparent
+
+-- Create Progress Bar
+local progressBar = Instance.new("Frame")
+progressBar.Parent = frame
+progressBar.BackgroundColor3 = Color3.fromRGB(255, 165, 0)  -- Orange color
+progressBar.Size = UDim2.new(0, 0, 0, 20)  -- Start with 0 width
+progressBar.Position = UDim2.new(0.5, -0, 0, 100)  -- Centered horizontally and vertically below the text
+progressBar.AnchorPoint = Vector2.new(0.5, 0.5)  -- Center the bar within the frame
+
+-- Function to simulate loading
+local function startLoading()
+    local elapsedTime = 0
+    local loadingDuration = 10  -- Duration for loading in seconds
+    
+    -- Update the loading bar over time
+    while elapsedTime < loadingDuration do
+        local progress = elapsedTime / loadingDuration
+        progressBar.Size = UDim2.new(progress, 0, 0, 20)  -- Adjust progress bar size
+        elapsedTime = elapsedTime + wait(0.1)
+    end
+
+    -- Once the progress bar is filled, destroy the ScreenGui
+    screenGui:Destroy()  -- Destroy the entire loading screen immediately after the progress bar finishes
+
+    -- The rest of your code can be placed here to run after the loading is complete
+    -- For example:
+    print("Loading complete! Now proceeding with the main script...")
+    -- You can place your further actions or UI creation code here
+end
+
+-- Start the loading process
+startLoading()
+
+-- Create ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.ResetOnSpawn = false
+
+-- Create Frame
+local frame = Instance.new("Frame")
+frame.Parent = screenGui
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.Size = UDim2.new(0, 200, 0, 150)
+frame.Position = UDim2.new(0.5, -100, 0.5, -75)
+frame.Active = true
+frame.Draggable = true
+frame.BorderSizePixel = 2
+frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+
+-- Create Play Button (formerly On Button)
+local onButton = Instance.new("TextButton")
+onButton.Parent = frame
+onButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+onButton.Size = UDim2.new(0, 60, 0, 30)
+onButton.Position = UDim2.new(0, 20, 0, 20)
+onButton.Text = "Play"  -- Changed text from "On" to "Play"
+onButton.TextScaled = true
+onButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+-- Create Stop Button (formerly Off Button)
+local offButton = Instance.new("TextButton")
+offButton.Parent = frame
+offButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+offButton.Size = UDim2.new(0, 60, 0, 30)
+offButton.Position = UDim2.new(0, 120, 0, 20)
+offButton.Text = "Stop"  -- Changed text from "Off" to "Stop"
+offButton.TextScaled = true
+offButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+-- Replace the Destroy button with a Label
+local byRamenSukunaLabel = Instance.new("TextLabel")
+byRamenSukunaLabel.Parent = frame
+byRamenSukunaLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+byRamenSukunaLabel.Size = UDim2.new(0, 160, 0, 30)
+byRamenSukunaLabel.Position = UDim2.new(0, 20, 0, 60)
+byRamenSukunaLabel.Text = "By Ramen Sukuna 🍜"
+byRamenSukunaLabel.TextScaled = true
+byRamenSukunaLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+byRamenSukunaLabel.TextXAlignment = Enum.TextXAlignment.Center
+byRamenSukunaLabel.TextYAlignment = Enum.TextYAlignment.Center
+byRamenSukunaLabel.BackgroundTransparency = 1  -- Makes it just text
+
+-- Create Status Indicator
+local statusLabel = Instance.new("TextLabel")
+statusLabel.Parent = frame
+statusLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+statusLabel.Size = UDim2.new(0, 200, 0, 30)
+statusLabel.Position = UDim2.new(0, 0, 0, -30)
+statusLabel.Text = "Status: Off"
+statusLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+statusLabel.TextScaled = true
+statusLabel.TextXAlignment = Enum.TextXAlignment.Center
+
+-- Create "X" Button inside the Frame to destroy the GUI
+local closeButton = Instance.new("TextButton")
+closeButton.Parent = frame
+closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)  -- Red background
+closeButton.Size = UDim2.new(0, 30, 0, 30)  -- Small button size
+closeButton.Position = UDim2.new(1, -35, 0, 5)  -- Position inside the frame, top-right with padding
+closeButton.Text = "X"
+closeButton.TextScaled = true
+closeButton.TextColor3 = Color3.fromRGB(0, 0, 0)  -- Black text
+closeButton.BorderSizePixel = 0  -- No border
+
+-- Function to close the GUI when "X" is clicked
+closeButton.MouseButton1Click:Connect(function()
+    screenGui:Destroy()  -- Destroy the ScreenGui
+end)
+
+-- Variable to store platform and follow connection
+local platform
+local followConnection
+local isPlatformActive = false  -- Track platform status
+
+-- Function to create platform
+local function createPlatform()
+    local player = game.Players.LocalPlayer
+    if not player or not player.Character then return end
+    
+    local character = player.Character
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    
+    -- Create a new part (platform)
+    platform = Instance.new("Part")
+    platform.Size = Vector3.new(40, 1, 40)  -- Size of the platform
+    platform.Anchored = true
+    platform.Color = Color3.fromRGB(255, 255, 255)  -- Red color
+    platform.Parent = workspace
+    
+    -- Follow the character's position
+    followConnection = game:GetService("RunService").Heartbeat:Connect(function()
+        if character and humanoidRootPart then
+            platform.Position = humanoidRootPart.Position - Vector3.new(0, 6.98, 0)
+        end
+    end)
+    
+    -- Update status and button state
+    statusLabel.Text = "Status: On"
+    statusLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+    isPlatformActive = true
+end
+
+-- Function to remove platform
+local function removePlatform()
+    if platform then
+        platform:Destroy()
+        platform = nil
+    end
+    if followConnection then
+        followConnection:Disconnect()
+        followConnection = nil
+    end
+    
+    -- Update status and button state
+    statusLabel.Text = "Status: Off"
+    statusLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+    isPlatformActive = false
+end
+
+-- Button Functions
+onButton.MouseButton1Click:Connect(function()
+    if not isPlatformActive then
+        createPlatform()
+    end
+end)
+
+offButton.MouseButton1Click:Connect(function()
+    if isPlatformActive then
+        removePlatform()
+    end
+end)
+
+-- Button Hover Effects (optional, to enhance UX)
+local function onButtonHover(button, hover)
+    button.BackgroundColor3 = hover and Color3.fromRGB(0, 200, 0) or Color3.fromRGB(0, 255, 0)
+end
+
+local function offButtonHover(button, hover)
+    button.BackgroundColor3 = hover and Color3.fromRGB(200, 0, 0) or Color3.fromRGB(255, 0, 0)
+end
+
+onButton.MouseEnter:Connect(function() onButtonHover(onButton, true) end)
+onButton.MouseLeave:Connect(function() onButtonHover(onButton, false) end)
+
+offButton.MouseEnter:Connect(function() offButtonHover(offButton, true) end)
+offButton.MouseLeave:Connect(function() offButtonHover(offButton, false) end)
